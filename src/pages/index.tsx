@@ -1,7 +1,14 @@
+import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { Open_Sans } from "@next/font/google";
 import { Noto_Sans_KR } from "@next/font/google";
+
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import RestoreIcon from "@mui/icons-material/Restore";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 const enFont = Open_Sans({ subsets: ["latin"] });
 const krFont = Noto_Sans_KR({
@@ -10,6 +17,8 @@ const krFont = Noto_Sans_KR({
 });
 
 export default function Home() {
+  const [value, setValue] = useState(0);
+
   return (
     <>
       <Head>
@@ -19,6 +28,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="">
+        <BottomNavigation
+          showLabels
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+        >
+          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
+          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+        </BottomNavigation>
+        ;
         <div className="">
           <p>
             Get started by editing&nbsp;
@@ -26,7 +47,6 @@ export default function Home() {
           </p>
           <div></div>
         </div>
-
         <div className="">
           <h2 className={enFont.className}>
             Docs <span>-&gt;</span>
