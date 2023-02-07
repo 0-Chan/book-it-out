@@ -8,5 +8,6 @@ module.exports = {
   theme: {
     extend: {},
   },
+  tailwindConfig: "./styles/tailwind.config.js",
   plugins: [],
 };
